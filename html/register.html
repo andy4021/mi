@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米注册</title>
+    <link rel="stylesheet" href="../css/register.css"/>
+</head>
+<body>
+    <div class="con">
+        <h2>欢迎来到小米</h2>
+        <h3>welcome to mi</h3>
+        <p>
+            <span>用户名</span>
+            <input type="text" id="username" name="username"/>
+            <span id="usernameSpan"></span>
+        </p>
+        <p class="passP">
+            <span>密码</span>
+            <input type="password" id="userpass" name="userpass"/>
+            <span id="userpassSpan"></span>
+        </p>
+        <p class="repassP">
+            <span>重复密码</span>
+            <input type="password" id="reuserpass" name="reuserpass"/>
+            <span id="reuserpassSpan"></span>
+        </p>
+        <p class="btnP">
+            <button id="btn">注册</button>
+            <span id="btnSpan"></span>
+        </p>
+        <p class="register">已有账号，点击<a href="login.html">此处登录</a></p>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/cookie.js"></script>
+<script>
+    //用户名判断正则
+    $("#username").blur(function(){
+        let usernameVal = $("#username").val();
+        if(usernameVal == ""){
+            $("#usernameSpan").css({display:"block"}).html("用户名不能为空");
+            $(this).css({"border-color":"deeppink"});
+        }
+        else{
+            $("#usernameSpan").css({display:"none"});
+            let pattern = /[\w]{3,16}/ig;
+            let patternhz = /[\u4e00-\u9fa5]{2,4}/i;
+            if(pattern.test(usernameVal) || patternhz.test(usernameVal)){
+                //验证成功，进行ajax验证
+                let str = "usernameVal="+usernameVal;
+                console.log(str)
+                $.get(
+                    "../php/username.php",
+                    {username:usernameVal},
+                    function(data) {
+                        if (data == 0) {
+                            //数据库里头没有
+                            $("#usernameSpan").css({display: "block"}).html("该用户名无人使用，请继续注册");
+                        }
+                        else if (data == 1){
+                            $("#usernameSpan").css({display: "block"}).html("该用户名已经被使用，请换一个");
+                        }
+                    }
+                )
+            }
+            else{
+                $("#usernameSpan").css({display:"block"}).html("请输入3-8位的字符");
+            }
+        }
+    });
+    //判断密码输入合法性
+    $("#userpass").blur(function(){
+        let userpassVal = $("#userpass").val();
+        if(userpassVal == ""){
+            $("#userpassSpan").css({display:"block"}).html("密码不能为空");
+            $(this).css({"border-color":"deeppink"});
+        }
+        else{
+            let pattern1 = /[a-z]{4,6}[\d]{4,6}/i;
+            let pattern2 = /[\d]{4,6}[a-z]{4,6}/i;
+            if(pattern1.test(userpassVal) || pattern2.test(userpassVal)){
+                $("#userpassSpan").css({display:"none"});
+            }
+            else{
+                $("#userpassSpan").css({display:"block"}).html("请输入8-12位的字符，数字字母混合");
+            }
+        }
+    });
+    //重复密码判断
+    $("#reuserpass").blur(function(){
+        let userpassVal = $("#userpass").val();
+        let reuserpassVal = $("#reuserpass").val();
+        if(userpassVal=="" && reuserpassVal==""){
+            $("#reuserpassSpan").css({display:"block"}).html("密码不能为空");
+        }
+        else if(userpassVal != reuserpassVal){
+            $("#reuserpassSpan").css({display:"block"}).html("两次密码不一致");
+        }
+        else if(userpassVal == reuserpassVal){
+            $("#reuserpassSpan").css({display:"block"}).html("密码一致，请继续");
+        }
+        else{
+            $("#reuserpassSpan").css({display:"block"}).html("密码输入有误，请重试");
+        }
+    });
+    //点击登录按钮进行判断
+    $("#btn").click(function(){
+        let $username = $("#username").val();
+        let $userpass = $("#userpass").val();
+        let $reuserpass = $("#reuserpass").val();
+        if($username != "" && $userpass != "" && $reuserpass != ""){
+            if($userpass == $reuserpass){
+                $.ajax({
+                    type:"post",
+                    url:"../php/register.php",
+                    async:true,
+                    data:{
+                        username:$username,
+                        userpass:$userpass
+                    },
+                    success:function(data){
+                        if(data == 1){
+                            //插入成功
+                            //将用户名存入cookie
+                            setCookie("username",$username,7);
+                            location.href = "success.html";
+                        }
+                        else{
+                            $("#btnSpan").css({display:"block"}).html("服务器错误，请稍后重试");
+                        }
+                    }
+                })
+            }
+            else{
+                $("#btnSpan").css({display:"block"}).html("两次密码不一致");
+            }
+        }
+        else{
+            $("#btnSpan").css({display:"block"}).html("用户名或密码有误，请重试");
+        }
+    })
+</script>

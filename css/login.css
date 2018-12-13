@@ -1,0 +1,92 @@
+.con{
+    width: 500px;
+    height: 400px;
+    background: url("../img1/con1.jpg") no-repeat;
+    background-size: cover;
+    margin: 100px auto;
+    position: relative;
+}
+h2{
+    color: orangered;
+    font-weight: 100;
+    line-height: 30px;
+    font-size: 18px;
+    margin-left: 20px;
+}
+h3{
+    color: orangered;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 100;
+    margin-left: 20px;
+}
+p{
+    width: 300px;
+    overflow: hidden;
+}
+p span:nth-of-type(1){
+    color: #666;
+    font-size: 16px;
+    line-height: 30px;
+    float: left;
+}
+
+input{
+    width: 200px;
+    height: 30px;
+    float: right;
+    border-color: #666;
+    text-indent: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+#usernameSpan{
+    display: none;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    color: deeppink;
+    position: absolute;
+    left: 310px;
+    top: 89px;
+}
+#userpassSpan{
+    display: none;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    color: deeppink;
+    position: absolute;
+    left: 310px;
+    top: 140px;
+}
+
+#btn{
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: black;
+    font-size: 20px;
+    outline: none;
+    float: right;
+}
+#btnSpan{
+    position: absolute;
+    left: 310px;
+    top: 192px;
+    color: #333;
+    font-size: 14px;
+    line-height: 30px;
+    display: none;
+}
+.register{
+    color: #666;
+    line-height: 24px;
+    font-size: 14px;
+}
+.register a{
+    color: deepskyblue;
+    font-size: 14px;
+    text-decoration: none;
+}

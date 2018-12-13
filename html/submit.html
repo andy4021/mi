@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结算</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .submitDiv{
+            width: 400px;
+            height: 120px;
+            background: orangered;
+            margin: 0 auto;
+        }
+        p{
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 120px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .backIndex{
+            width: 400px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: deeppink;
+            text-align: center;
+        }
+        a{
+            color: #55a532;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="submitDiv">
+        <p class="submitP">您共支付
+            <span class="submitSpan"></span>
+        </p>
+    </div>
+    <div class="backIndex">
+        <a href="index.html">返回首页</a>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/cookie.js"></script>
+<script>
+    $(function(){
+        let price = getCookie("priceSubmit");
+        $(".submitSpan").html(price)
+    })
+</script>

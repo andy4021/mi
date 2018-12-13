@@ -1,0 +1,274 @@
+ @charset "utf-8";
+ .cheng{
+   width: 100%;
+   height: 400px;
+   display: none;
+ }
+ .goodsCart_out{
+   width: 100%;
+   margin: 20px 0;
+ }
+ .goodsCart{
+   width: 1226px;
+   margin: 0 auto;
+   background: #ffffff;
+ }
+ .goodsC_t{
+   zoom: 1;
+ }
+ .goodsC_t::after{
+   content: '';
+   height: 0;
+   display: block;
+   clear: both;
+   visibility: hidden;
+ }
+ .checkAll{
+   width: 110px;
+   height: 70px;
+   float: left;
+   text-align: center;
+   margin-right: 120px;
+   input{
+     margin-right: 10px;
+   }
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 70px;
+   }
+ }
+ .goods_Name{
+   width: 380px;
+   height: 70px;
+   text-align: left;
+   float: left;
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 70px;
+   }
+ }
+ .goods_Price{
+   width: 160px;
+   float: left;
+   height: 70px;
+   text-align: center;
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 70px;
+   }
+ }
+ .goods_Num{
+   float: left;
+   width: 150px;
+   height: 70px;
+   text-align: center;
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 70px;
+   }
+ }
+ .goods_Total{
+   float: left;
+   width: 180px;
+   height: 70px;
+   text-align: center;
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 70px;
+   }
+ }
+ .goods_Do{
+   float: left;
+   width: 80px;
+   height: 70px;
+   text-align: center;
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 70px;
+   }
+ }
+ .goodsC_b{
+   width: 1226px;
+   zoom: 1;
+   margin-bottom: 20px;
+ }
+ .goodsC_b::after{
+   content: '';
+   display: block;
+   clear: both;
+   height: 0;
+   visibility: hidden;
+ }
+ .onecheck{
+   width: 85px;
+   float: left;
+   padding-top: 34px;
+   padding-left: 27px;
+   input{
+
+   }
+ }
+ .createI_P{
+   width: 460px;
+   float: left;
+   img{
+     width: 80px;
+     height: 80px;
+     margin-right: 20px;
+     float: left;
+   }
+   span{
+     color: #333;
+     font-size: 14px;
+     line-height: 80px;
+     float: left;
+   }
+   span{
+     color: #333;
+     font-size: 14px;
+     float: left;
+   }
+ }
+.create_Price{
+  width: 160px;
+  float: left;
+  span{
+    color: #333;
+    font-size: 14px;
+    line-height: 80px;
+    float: right;
+    margin-right: 30px;
+  }
+}
+.create_Num{
+  float: left;
+  padding-top: 15px;
+  padding-left: 40px;
+  span{
+    float: left;
+    display: block;
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    border: 1px solid gray;
+    border-right: none;
+  }
+  span{
+    float: left;
+    border: 1px solid gray;
+  }
+  span{
+    float: left;
+  }
+}
+.create_Total{
+  width: 210px;
+  float: left;
+  text-align: center;
+  span{
+    color: #333;
+    font-size: 14px;
+    line-height: 70px;
+  }
+}
+.create_Do{
+  width: 90px;
+  float: left;
+  text-align: center;
+  span{
+    color: #333;
+    font-size: 14px;
+    line-height: 70px;
+  }
+}
+.isdelete{
+  width: 300px;
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  margin-left: -150px;
+  background: #ffffff;
+  box-shadow: 0 0 18px 6px #e7e1cd;
+  z-index: 100;
+  display: none;
+  .istop{
+    width: 300px;
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    line-height: 60px;
+  }
+  .isbot{
+    width: 240px;
+    overflow: hidden;
+    padding: 0 30px;
+  }
+  .span_l{
+    float: left;
+    font-size: 14px;
+    color: #666;
+    line-height: 40px;
+    cursor: pointer;
+  }
+  .span_r{
+    float: right;
+    font-size: 14px;
+    color: #666;
+    line-height: 40px;
+    cursor: pointer;
+  }
+}
+.computer_out{
+  width: 100%;
+  background: #ffffff;
+}
+.computer{
+  width: 1226px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.zongji{
+  width: 200px;
+  height: 60px;
+  float: right;
+  overflow: hidden;
+}
+.oneSpan{
+  display: block;
+  float: left;
+  color: #333;
+  font-size: 14px;
+  line-height: 60px;
+}
+.price_com{
+  display: block;
+  width: 100px;
+  color: #ffffff;
+  height: 60px;
+  background: orangered;
+  line-height: 60px;
+  text-align: center;
+}
+.goods_n{
+  float: right;
+  margin-right: 60px;
+  p{
+    color: #333;
+    font-size: 14px;
+    line-height: 60px;
+    span{
+      color: #333;
+      font-size: 14px;
+      line-height: 60px;
+      margin-left: 20px;
+    }
+  }
+}

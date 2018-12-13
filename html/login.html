@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米登录</title>
+    <link rel="stylesheet" href="../css/login.css"/>
+</head>
+<body>
+    <div class="con">
+        <h2>欢迎来到小米</h2>
+        <h3>welcome to mi</h3>
+        <p>
+            <span>用户名</span>
+            <input type="text" id="username" name="username"/>
+            <span id="usernameSpan"></span>
+        </p>
+        <p>
+            <span>密码</span>
+            <input type="password" id="userpass" name="userpass"/>
+            <span id="userpassSpan"></span>
+        </p>
+        <p class="btnP">
+            <button id="btn">登录</button>
+            <span id="btnSpan"></span>
+        </p>
+        <p class="register">还未注册，点击<a href="register.html">此处注册</a></p>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/cookie.js"></script>
+<script>
+    //let str = "赵丽颖";
+    //console.log(str.length);//3
+    //用户名判断正则
+    $("#username").blur(function(){
+        let usernameVal = $("#username").val();
+        if(usernameVal == ""){
+            $("#usernameSpan").css({display:"block"}).html("用户名不能为空");
+        }
+        else{
+            $("#usernameSpan").css({display:"none"});
+            let pattern = /[\w]{3,16}/ig;
+            let patternhz = /[\u4e00-\u9fa5]{2,4}/i;
+            if(pattern.test(usernameVal) || patternhz.test(usernameVal)){
+                //验证成功，进行ajax验证
+                let str = "usernameVal="+usernameVal;
+                console.log(str)
+                $.get(
+                    "../php/username.php",
+                    {username:usernameVal},
+                    function(data) {
+                        if (data == 0) {
+                            $("#usernameSpan").css({display: "block"}).html("用户名输入错误");
+                        }
+                        else if (data == 1){
+                            $("#usernameSpan").css({display: "block"}).html("用户名输入正确");
+                        }
+                    }
+                )
+            }
+            else{
+                $("#usernameSpan").css({display:"block"}).html("请输入3-8位的字符");
+            }
+        }
+    })
+    //判断密码输入合法性
+    $("#userpass").blur(function(){
+        let userpassVal = $("#userpass").val();
+        if(userpassVal == ""){
+            $("#userpassSpan").css({display:"block"}).html("密码不能为空");
+        }
+        else{
+            let pattern1 = /[a-z]{4,6}[\d]{4,6}/i;
+            let pattern2 = /[\d]{4,6}[a-z]{4,6}/i;
+            if(pattern1.test(userpassVal) || pattern2.test(userpassVal)){
+                $("#userpassSpan").css({display:"none"});
+            }
+            else{
+                $("#userpassSpan").css({display:"block"}).html("请输入8-12位的字符，数字字母混合");
+            }
+        }
+    })
+    //点击登录按钮进行判断
+    $("#btn").click(function(){
+        let usernameVal = $("#username").val();
+        let userpassVal = $("#userpass").val();
+        console.log(usernameVal)
+        let str = "username="+usernameVal+"&userpass="+userpassVal;
+        if(usernameVal!="" && userpassVal!=""){
+            $.ajax({
+                type:"post",
+                url:"../php/login.php",
+                // data:{
+                //     username:usernameVal,
+                //     userpass:userpassVal
+                // },
+                data:str,
+                success:function(data){
+                    if(data==1){
+                        //找到，登录成功
+                        let n = 10000;
+                        setCookie("n",n,7);//用于购物车的goodsId
+                        setCookie('username',usernameVal,7);
+                        location.href = "index.html";
+                    }
+                    else{
+                        $("#btnSpan").css({display:"block"}).html("密码输入有误，请重新输入");
+                    }
+                }
+            })
+        }
+        else{
+            $("#btnSpan").css({display:"block"}).html("用户名或密码输入有误，请重新输入");
+        }
+
+    })
+</script>
