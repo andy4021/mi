@@ -1,11 +1,5 @@
 $(function() {
 
-
-
-
-
-
-
     //划过select_two
     $(".select_two").hover(
         function () {

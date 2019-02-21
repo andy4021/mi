@@ -63,7 +63,7 @@ $(function(){
                 for(let i=1;i<data.length;i++){
                     if(index == i){
                         let goodsId = data[i].goodsId;
-                        setCookie("goodsId",goodsId,7);//这边存cookie，另一个页面获取
+                        setCookie("goodsId",goodsId,7); //这边存cookie，另一个页面获取
                         location.href = "ProductInfo.html";
                     }
                 }
